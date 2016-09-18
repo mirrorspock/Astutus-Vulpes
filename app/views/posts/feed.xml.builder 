@@ -1,0 +1,9 @@
+# app/views/posts/feed.xml.builder
+xml.instruct!
+xml.posts do 
+  @posts.each do |post| 
+    xml.post id:  post.id do 
+      xml.title post.title 
+    end 
+  end
+end

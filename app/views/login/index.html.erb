@@ -1,0 +1,20 @@
+<%= form_for(@authenticated_user, url: login_path) do |f| %>
+
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.text_field :password  %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit('login') %>
+  </div>
+
+  <p>
+    No account? then <%= link_to('signup', signup_path) %>.
+  </p>
+<% end %>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="user-info">
+    <% if @authenticated_user && !@authenticated_user.new_record? %>
+      <%= link_to(@authenticated_user.name, user_path(id: @authenticated_user.id)) %>
+      <%= link_to('logout', logout_path) %>
+    <% else %>
+      <%= link_to('login', signin_path) %>
+    <% end %>
+  </div>
+
+<%= yield %>
+
+</body>
+</html>
