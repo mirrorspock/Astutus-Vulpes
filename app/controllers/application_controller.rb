@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def remove_authenticated_user
+    @authenticated_user = nil
     session[:user_id] = nil
   end
 
@@ -40,7 +41,7 @@ class ApplicationController < ActionController::Base
   def require_authenticated_user
     unless @authenticated_user
       flash[:notice] = 'Authenticated user is required'
-      redirect_to(login_path)
+      redirect_to(signin_path)
     end
   end
 end

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # Login Actions
   get '/signin' => 'login#index'
   get '/signup', to: redirect('/users/new'), as: :signup
-  post '/login' => 'login#login'
+  post '/login' => 'login#index'
   get '/logout' => 'login#logout'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

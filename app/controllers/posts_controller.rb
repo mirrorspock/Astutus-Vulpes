@@ -1,6 +1,8 @@
 # Posts
 class PostsController < ApplicationController
+  before_action :require_authenticated_user, only: [ :edit ]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+
 
   # GET /posts
   # GET /posts.json
