@@ -11,10 +11,10 @@ class LoginController < ApplicationController
   def login
     if try_to_login(login_params[:email], login_params[:password])
       save_authenticated_user_id(@authenticated_user.id)
-      redirect_to('/', notice: 'thanks nigga')
+      redirect_to('/', notice: 'Thanks for logging in')
     else
       @authenticated_user = User.new(login_params)
-      render(:index, error: 'no good nigga')
+      render(:index, error: 'Login failed')
     end
   end
 
