@@ -1,6 +1,6 @@
 # Posts
 class PostsController < ApplicationController
-  before_action :require_authenticated_user, only: [ :edit ]
+#  before_action :require_authenticated_user, only: [ :new, :edit, :update, :crate, :destroy ]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
 
@@ -28,6 +28,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.author_id = @authenticated_user.id
 
     respond_to do |format|
       if @post.save

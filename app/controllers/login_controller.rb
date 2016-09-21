@@ -14,7 +14,7 @@ class LoginController < ApplicationController
       redirect_to('/', notice: 'Thanks for logging in')
     else
       @authenticated_user = User.new(login_params)
-      render(:index, error: 'Login failed')
+      redirect_to(:index, error: 'Login failed')
     end
   end
 

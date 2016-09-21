@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
             format: {
               with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
               on: :create
-            }
+            },
+            uniqueness: true
   # --- Validations ------------------------------------------------------->>
 
   # --- Callbacks --------------------------------------------------------->>
@@ -22,6 +23,6 @@ class User < ActiveRecord::Base
   private
 
   def send_invite_email
-    Notifications.invitation(self).deliver
+    Notifications.invitation(self).deliver_now
   end
 end

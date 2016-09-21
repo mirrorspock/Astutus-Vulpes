@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
   # --- Validations ------------------------------------------------------->>
   validates :title, presence: true
   validates :state, inclusion: { in: STATES }
-  validate :not_spammy
+  validate :not_spammy, if: :title
   # --- Validations ------------------------------------------------------->>
 
   # --- Callbacks --------------------------------------------------------->>
@@ -35,6 +35,6 @@ class Post < ActiveRecord::Base
   end
 
   def not_spammy
-    errors.add(:title, 'is too spammy') if title.starts_with?('Top 10 ways to')
+    errors.add(:title, 'is too spammy') if self.title.starts_with?('Top 10 ways to')
   end
 end
