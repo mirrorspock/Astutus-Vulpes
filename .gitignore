@@ -20,3 +20,5 @@
 /.vagrant
 
 .byebug_history
+
+/*.swp

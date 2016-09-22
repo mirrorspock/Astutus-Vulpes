@@ -21,3 +21,26 @@ end
 Then(/^I should see "([^"]*)"$/) do |title|
   expect(page).to have_content(title)
 end
+
+
+# remove posts
+
+Given(/^a blog post titled "([^"]*)"$/) do |title|
+  @user = User.create(name: 'hi', email: 'ho@ho.com', password: 'secret')
+  @post = Post.create(title: title, author: @user)
+  visit '/'
+  expect(page).to have_content(title)
+end
+
+When(/^I remove the post "([^"]*)"$/) do |title|
+  #find("tr#post_info_#{@post.id}").find('a[data-method=delete]').click
+  find(:xpath, "//a[@data-method='delete'][@href='/posts/#{@post.id}']").click
+end
+
+When(/^I go to the home page$/) do
+  visit '/'
+end
+
+Then(/^I should not see "([^"]*)"$/) do |title|
+  expect(page).to_not have_content(title)
+end
